@@ -26,6 +26,6 @@ jobs:
           coverity_policy_view: ${{ secrets.COVERITY_POLICY_VIEW }}
           coverity_repository_name: ${{ secrets.COVERITY_REPOSITORY_NAME }}
           coverity_branch_name: ${{ secrets.COVERITY_BRANCH_NAME }}
-          bridge_download_url: ${{ env.MAC_BRIDGE_URL }}
+          bridge_download_url: "https://artifactory.internal.synopsys.com/artifactory/clops-local/clops.sig.synopsys.com/synopsys-action/0.1.61/ci-package-0.1.61-win64.zip"
 
 
