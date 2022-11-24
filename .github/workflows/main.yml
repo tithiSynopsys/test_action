@@ -1,20 +1,21 @@
-name: Synopsys Action
-
+name: CI-Polaris
 on:
   push:
-    branches: [ master, main ]
-
+    branches: [ "main","tb_branch1" ]
   pull_request:
-    branches: [ master, main ]
-
+    branches: [ "main", "tb_branch1" ]
+  workflow_dispatch:
 jobs:
   build:
-    runs-on: [self-hosted, Windows, tithi]
+    runs-on: [self-hosted, Windows, tb_action1]
+    env:
+      MAC_BRIDGE_URL: "https://sig-repo.synopsys.com/artifactory/bds-integrations-release/com/synopsys/integration/synopsys-action/0.1.72/ci-package-0.1.72-macosx.zip"
+      LINUX_BRIDGE_URL: "https://sig-repo.synopsys.com/artifactory/bds-integrations-release/com/synopsys/integration/synopsys-action/0.1.72/ci-package-0.1.72-linux64.zip"
+      WINDOWS_BRIDGE_URL: "https://sig-repo.synopsys.com/artifactory/bds-integrations-release/com/synopsys/integration/synopsys-action/0.1.72/ci-package-0.1.72-win64.zip"
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Synopsys Action
-        uses: synopsys-sig/synopsys-action@main
+      - uses: actions/checkout@v3
+      - name: Use synopsys unified-action
+        uses: ./
         with:
           coverity_url: ${{ secrets.COVERITY_URL }}
           coverity_user: ${{ secrets.COVERITY_USER }}
@@ -27,5 +28,9 @@ jobs:
           coverity_repository_name: ${{ secrets.COVERITY_REPOSITORY_NAME }}
           coverity_branch_name: ${{ secrets.COVERITY_BRANCH_NAME }}
           bridge_download_url: "https://artifactory.internal.synopsys.com/artifactory/clops-local/clops.sig.synopsys.com/synopsys-action/0.1.61/ci-package-0.1.61-win64.zip"
-
-
+          polaris_serverUrl: ${{ secrets.POLARIS_SEVER_URL }}
+          polaris_accessToken: ${{ secrets.POLARIS_ACCESS_TOKEN }}
+          polaris_application_name: "tp_app1"
+          polaris_project_name: "test_action"
+          polaris_assessment_types: '["SAST"]'
+          bridge_download_url: ${{ env.WINDOWS_BRIDGE_URL}}
