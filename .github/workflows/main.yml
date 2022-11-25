@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 jobs:
   build:
-    runs-on: [self-hosted, Windows, tb_action1]
+    runs-on: [ubuntu-latest]
     env:
       MAC_BRIDGE_URL: "https://sig-repo.synopsys.com/artifactory/bds-integrations-release/com/synopsys/integration/synopsys-action/0.1.72/ci-package-0.1.72-macosx.zip"
       LINUX_BRIDGE_URL: "https://sig-repo.synopsys.com/artifactory/bds-integrations-release/com/synopsys/integration/synopsys-action/0.1.72/ci-package-0.1.72-linux64.zip"
@@ -17,7 +17,7 @@ jobs:
       - name: Use synopsys unified-action
         uses: synopsys-sig/synopsys-action@v1
         with:
-          bridge_download_url: ${{ env.WINDOWS_BRIDGE_URL}}
+          bridge_download_url: ${{ env.LINUX_BRIDGE_URL}}
           polaris_serverUrl: ${{ secrets.POLARIS_SEVER_URL }}
           polaris_accessToken: ${{ secrets.POLARIS_ACCESS_TOKEN }}
           polaris_application_name: "tp_app1"
