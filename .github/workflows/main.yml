@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Use synopsys unified-action
-        uses: synopsys-sig/synopsys-action@v1
+        uses: synopsys-sig/synopsys-action@v0.1.0
         with:
           bridge_download_url: ${{ env.LINUX_BRIDGE_URL}}
           polaris_serverUrl: ${{ secrets.POLARIS_SEVER_URL }}
