@@ -1,9 +1,9 @@
 name: CI-Polaris
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main" ,"tb"]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main" ,"tb"]
   workflow_dispatch:
 jobs:
   build:
