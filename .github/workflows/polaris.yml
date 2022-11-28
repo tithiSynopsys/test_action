@@ -1,0 +1,28 @@
+name: CI-Polaris
+on:
+  push:
+    branches: [ "main","tb_branch1" ]
+  pull_request:
+    branches: [ "main", "tb_branch1" ]
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: [self-hosted, tb_action_1]
+    env:
+      MAC_BRIDGE_URL: "https://sig-repo.synopsys.com/artifactory/bds-integrations-release/com/synopsys/integration/synopsys-action/0.1.72/ci-package-0.1.72-macosx.zip"
+      LINUX_BRIDGE_URL: "https://sig-repo.synopsys.com/artifactory/bds-integrations-release/com/synopsys/integration/synopsys-action/0.1.72/ci-package-0.1.72-linux64.zip"
+      WINDOWS_BRIDGE_URL: "https://sig-repo.synopsys.com/artifactory/bds-integrations-release/com/synopsys/integration/synopsys-action/0.1.72/ci-package-0.1.72-win64.zip"
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use synopsys unified-action
+        uses: synopsys-sig/synopsys-action@v0.1.0
+        with:
+          bridge_download_url: ${{ env.LINUX_BRIDGE_URL}}
+          polaris_serverUrl: "https://cdev.altair.synopsys.com/"
+          polaris_accessToken: "816smiaag16kl3p6e6417e0cr4aoi6s747nkdus8e4g5n5te46bsrkku6hatr7majpninibea6vm0"
+         # polaris_serverUrl: ${{ secrets.POLARIS_SEVER_URL }}
+          #polaris_accessToken: ${{ secrets.POLARIS_ACCESS_TOKEN }}
+          polaris_application_name: "tp_app1"
+          polaris_project_name: "tb_proj"
+          polaris_assessment_types: "[\"SCA\", \"SAST\"]"
+          
