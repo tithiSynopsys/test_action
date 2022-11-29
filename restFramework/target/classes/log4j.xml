@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "log4j.dtd" "log4j.dtd" >
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+  <!-- ============================== -->
+  <!-- Append messages to the console -->
+  <!-- ============================== -->
+
+    <appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+       <layout class="org.apache.log4j.PatternLayout"> 
+          <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss zzz} %-5p %c.%M:%L - %m%n"/>
+       </layout> 
+    </appender>
+  <!-- =============================== -->
+  <!-- Append messages to the log file -->
+  <!-- =============================== -->
+    <appender name="FA" class="org.apache.log4j.DailyRollingFileAppender">
+	    <param name="file" value="test-output/qa-test.log"/>
+	    <layout class="org.apache.log4j.PatternLayout">
+	      <param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss zzz} %-5p %c.%M:%L - %m%n"/>
+	    </layout>
+  </appender>
+
+    <logger name="org.apache">
+      <level value="ERROR" />
+    </logger>
+    
+    <logger name="com.jayway">
+      <level value="ERROR" />
+    </logger>
+    
+    <logger name="freemarker.cache">
+      <level value="ERROR" />
+    </logger>
+    
+   	<root>
+      	<priority value="DEBUG"/> 
+      	<appender-ref ref="STDOUT" />
+      	<appender-ref ref="FA" /> 
+   	</root> 
+
+</log4j:configuration>
