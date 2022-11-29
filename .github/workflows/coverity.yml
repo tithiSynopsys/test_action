@@ -1,9 +1,9 @@
 name: CI-Polaris
 on:
   push:
-    branches: [ "main","tb_branch1" ]
+    branches: [ "main"]
   pull_request:
-    branches: [ "main", "tb_branch1" ]
+    branches: [ "main1" ]
   workflow_dispatch:
 jobs:
   build:
@@ -17,10 +17,15 @@ jobs:
       - name: Use synopsys unified-action
         uses: synopsys-sig/synopsys-action@v0.1.0
         with:
-          bridge_download_url: ${{ env.LINUX_BRIDGE_URL}}
-          polaris_serverUrl: ${{ secrets.POLARIS_SEVER_URL }}
-          polaris_accessToken: ${{ secrets.POLARIS_ACCESS_TOKEN }}
-          polaris_application_name: "tp_app1"
-          polaris_project_name: "tb_proj"
-          polaris_assessment_types: "[\"SCA\", \"SAST\"]"
+          coverity_url: ${{ secrets.COVERITY_URL }}
+          coverity_user: ${{ secrets.COVERITY_USER }}
+          coverity_passphrase: ${{ secrets.COVERITY_PASSPHRASE }}
+          coverity_project_name: ${{ secrets.COVERITY_PROJECT_NAME }}
+          coverity_stream_name: ${{ secrets.COVERITY_STREAM_NAME }}
+          coverity_policy_view: ${{ secrets.COVERITY_POLICY_VIEW }}
+          coverity_repository_name: "test_action"
+          coverity_branch_name: "main"
+          # Mandatory for windows hosted environment
+          coverity_install_directory: "/root"
+          bridge_download_url: ${{ env.LINUX_BRIDGE_URL }}
           
