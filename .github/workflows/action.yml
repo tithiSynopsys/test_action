@@ -39,8 +39,8 @@ jobs:
           #polaris
           #polaris_serverUrl: "https://cdev.altair.synopsys.com/"
           #polaris_accessToken: "816smiaag16kl3p6e6417e0cr4aoi6s747nkdus8e4g5n5te46bsrkku6hatr7majpninibea6vm0"
-          polaris_serverUrl: ${{ secrets.POLARIS_SEVER_URL }}
-          polaris_accessToken: ${{ secrets.POLARIS_ACCESS_TOKEN }}
+          polaris_serverUrl: "https://polaris.synopsys.com/"
+          polaris_accessToken: "t8mj38ii950jn1brrl9qhqg8no8qcj1db6dknls4qgqf35l5206qbhq2ecs1a5v0fp764dd4pkvgo"
           polaris_application_name: "tp_app1"
           polaris_project_name: "tb_proj"
           polaris_assessment_types: "[ \"SCA\", \"SAST\" ]"
