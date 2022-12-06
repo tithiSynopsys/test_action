@@ -43,4 +43,4 @@ jobs:
           polaris_accessToken: "t8mj38ii950jn1brrl9qhqg8no8qcj1db6dknls4qgqf35l5206qbhq2ecs1a5v0fp764dd4pkvgo"
           polaris_application_name: "tb_app1"
           polaris_project_name: "tb_proj"
-          polaris_assessment_types: "[ \"SCA\", \"SAST\" ]"
+          polaris_assessment_types: "[ \"SAST\" ]"
